@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: cafe-ivy-api
+    runtime: node
+    plan: free
+    buildCommand: cd backend && npm install && cd ../frontend && npm install && VITE_API_URL="" npm run build && cp -r frontend/dist/* backend/public/
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+    disk:
+      name: cafe-ivy-data
+      mountPath: /var/data
+      sizeGB: 1
