@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { overflow-x: hidden; }
+  ::selection { background-color: #FFD4D4; color: #3C2E22; }
+}
+
+@layer components {
+  .glass { @apply bg-white/60 backdrop-blur-xl border border-white/30; }
+  .gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-mocha-500 to-mocha-700; }
+  .btn-primary {
+    @apply px-6 py-3 bg-mocha-700 text-cream-50 rounded-full font-medium tracking-wide
+    hover:bg-mocha-800 transition-all duration-300 hover:shadow-lg hover:shadow-mocha-700/20 active:scale-95;
+  }
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-mocha-300 text-mocha-700 rounded-full font-medium tracking-wide
+    hover:bg-mocha-700 hover:text-cream-50 hover:border-mocha-700 transition-all duration-300 active:scale-95;
+  }
+  .section-title { @apply font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-mocha-800; }
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/80 border border-sand-200 rounded-xl font-body text-mocha-800
+    placeholder:text-mocha-400 focus:outline-none focus:ring-2 focus:ring-mocha-300 focus:border-transparent transition-all duration-300;
+  }
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FAF8F5; }
+::-webkit-scrollbar-thumb { background: #C9B89E; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #B5A080; }
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #FFF9E8, #FFE8E8, #E8F0E8, #F5F0EA);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
