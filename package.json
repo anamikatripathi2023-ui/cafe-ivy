@@ -1,17 +1,12 @@
 {
-    "name": "cafe-backend",
+    "name": "cafe-ivy",
     "version": "1.0.0",
-    "type": "module",
+    "private": true,
     "scripts": {
-      "start": "node server.js",
-      "dev": "node --watch server.js"
-    },
-    "dependencies": {
-      "express": "^4.18.2",
-      "better-sqlite3": "^11.0.0",
-      "cors": "^2.8.5",
-      "bcryptjs": "^2.4.3",
-      "jsonwebtoken": "^9.0.2",
-      "dotenv": "^16.4.5"
+      "dev:backend": "cd backend && npm install && npm start",
+      "dev:frontend": "cd frontend && npm install && npm run dev",
+      "build": "cd backend && npm install && cd ../frontend && npm install && VITE_API_URL=\"\" npm run build && mkdir -p backend/public && cp -r frontend/dist/* backend/public/",
+      "start": "cd backend && node server.js",
+      "deploy": "npm run build && npm start"
     }
   }
